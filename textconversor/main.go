@@ -36,7 +36,7 @@ func main() {
 	validator := validator.NewValidator()
 
 	request := entities.Input{
-		Texto:            text,
+		Texto:           text,
 		OriginFormat:    origin,
 		DestinityFormat: destiny,
 	}
@@ -45,7 +45,11 @@ func main() {
 	singleton := singleton.GetInstances()
 
 	//validating formats
-	validator.Validate(singleton,request)
+	err = validator.Validate(singleton, request)
+	if err != nil {
+		fmt.Println("Hubo un error al momento de validar los formatos ingresados (origen o destino)", err)
+		return
+	}
 
 	if request.DestinityFormat == "morse" {
 		resp, err = mwMorse.parse(request)
@@ -62,5 +66,3 @@ func main() {
 	fmt.Println("Texto convertido", resp)
 
 }
-
-
