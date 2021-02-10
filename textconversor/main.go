@@ -7,6 +7,7 @@ import (
 	"github.com/textconversor/singleton"
 	"github.com/textconversor/validator"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -17,12 +18,15 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Texto a traducir: ")
 	text, _ := reader.ReadString('\n')
+	text = strings.TrimSuffix(text, "\n")
 
 	fmt.Print("Formato de origen: ")
 	origin, _ := reader.ReadString('\n')
+	origin = strings.TrimSuffix(origin, "\n")
 
 	fmt.Print("Formato de destino: ")
 	destiny, _ := reader.ReadString('\n')
+	destiny = strings.TrimSuffix(destiny, "\n")
 
 	bin := Binary{}
 	mor := Morse{}
