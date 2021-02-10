@@ -17,7 +17,7 @@ func newMiddleware(conv entities.Conversor) *middleware {
 
 func (mw *middleware) parse(i entities.Input) (response string, err error) {
 
-	fmt.Println("Objeto recivido", i)
+	fmt.Println("Texto recibido", i.Texto)
 
 	//llamando al metodo de parseo dependiendo del tipo
 	response, err = mw.conv.Parse(i)
