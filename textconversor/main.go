@@ -60,11 +60,12 @@ func main() {
 	} else if request.DestinityFormat == "binary" {
 		resp, err = mwBin.parse(request)
 	} else {
-
+		//otra implementacion
 	}
 
 	if err != nil {
 		fmt.Println("Hubo un error al momento de hacer el parseo", err)
+		return
 	}
 
 	fmt.Println("Texto convertido", resp)
